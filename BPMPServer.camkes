@@ -14,6 +14,7 @@
 
 import <BPMP.idl4>;
 #include <camkes-fdt-bind-driver.h>
+#include <plat.h>
 
 component BPMP {
     hardware;
@@ -43,9 +44,9 @@ component BPMPServer {
 
     configuration {
         hsp.dtb = dtb({ "path" : "/tegra-hsp@3c00000" });
-        bpmp.tx_channel_paddr = 0x3004e000;
-        bpmp.tx_channel_size = 0x1000;
-        bpmp.rx_channel_paddr = 0x3004f000;
-        bpmp.rx_channel_size = 0x1000;
+        bpmp.tx_channel_paddr = TX_CHANNEL_PADDR;
+        bpmp.tx_channel_size = TX_CHANNEL_SIZE;
+        bpmp.rx_channel_paddr = RX_CHANNEL_PADDR;
+        bpmp.rx_channel_size = RX_CHANNEL_SIZE;
     }
 }

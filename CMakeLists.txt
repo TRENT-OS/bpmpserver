@@ -27,6 +27,13 @@ function(BPMPServer_DeclareCAmkESComponent
     # but just to play safe we ensure once more here that it is enabled.
     set(CAmkESCPP ON CACHE BOOL "" FORCE)
 
+    CAmkESAddImportPath(
+        "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/include/plat/${KernelPlatform}"
+    )
+
+    CAmkESAddCPPInclude(
+        "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/include/plat/${KernelPlatform}"
+    )
 
     CAmkESAddImportPath(
         "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/camkes-include"
@@ -40,6 +47,8 @@ function(BPMPServer_DeclareCAmkESComponent
         ${name}
         SOURCES
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/src/server.c
+        INCLUDES
+            ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/include/plat/${KernelPlatform}
         C_FLAGS
             -Wall
             -Werror
